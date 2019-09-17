@@ -44,6 +44,8 @@ namespace Demo.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
+            var userAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
@@ -275,6 +277,12 @@ namespace Demo.Controllers
             {
                 return RedirectToAction(nameof(Login));
             }
+
+            ViewData["ReturnUrl"] = returnUrl;
+            ViewData["LoginProvider"] = info.LoginProvider;
+            var emails = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            return View("ExternalLogin", new ExternalLoginViewModel { Email = emails });
 
             // Sign in the user with this external login provider if the user already has a login.
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);

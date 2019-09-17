@@ -12,6 +12,7 @@ using Demo.Data;
 using Demo.Models;
 using Demo.Services;
 using System;
+using AspNetCore.Authentication.Alipay;
 
 namespace Demo
 {
@@ -56,10 +57,15 @@ namespace Demo
             {
                 qqOptions.AppId = Configuration["Authentication:QQ:AppId"];
                 qqOptions.AppKey = Configuration["Authentication:QQ:AppKey"];
-            }).AddWeChat(wechatOptions => {
+            }).AddWeChat(wechatOptions =>
+            {
                 wechatOptions.AppId = Configuration["Authentication:WeChat:AppId"];
                 wechatOptions.AppSecret = Configuration["Authentication:WeChat:AppSecret"];
-            }) ;
+            }).AddAlipay(options =>
+            {
+                options.AppId = "2016101300674410";
+                options.AppKey = Configuration["Authentication:QQ:AppKey"];
+            });
 
             services.AddMvc();
         }

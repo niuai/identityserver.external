@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AspNetCore.Authentication.Alipay\AspNetCore.Authentication.Alipay.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Authentication.Alipay\AspNetCore.Authentication.Alipay.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Authentication.QQ\AspNetCore.Authentication.QQ.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.AspNetCore.Authentication.WeChat\AspNetCore.Authentication.WeChat.csproj" />
   </ItemGroup>

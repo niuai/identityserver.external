@@ -61,10 +61,14 @@ namespace Demo
             {
                 wechatOptions.AppId = Configuration["Authentication:WeChat:AppId"];
                 wechatOptions.AppSecret = Configuration["Authentication:WeChat:AppSecret"];
-            }).AddAlipay(options =>
+            }).AddAlipay("Alipay", options =>
             {
                 options.AppId = "2016101300674410";
-                options.AppKey = Configuration["Authentication:QQ:AppKey"];
+                options.AlipayPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlzrWgal1iF9flTWO9dThRXqa9zAPDk1bsKN0x9WKSiTmxr8VDtCwvO0ScsIxr7LRm2WjbnnL+WSTXi7Y3GsQbxrv5j9OGBTSvbLVi64lQPJSIhNys6XXjAkXnwMD0ICBF8kyy3hHEtOMFr9zwsW5BDlX5RLQkG0Ril9/U57OQCe4IJ5ye+dSmstNpkCKgyXQhjHmNGCLzutqFTZRBxvp5LGu29cN4oywA5eSHts5lt5GbfdocbKU930ZH3z/k54u1eR+hdiSAGh6YQ8DBEvcl58GgfKwvO8gi7+sel6tUHaZHZnuqyFkc1I9ZrnH/07TjYeEor6oC9IHwilSYnjF6wIDAQAB";
+                options.AppPrivateKey = "xxxx";
+                options.GatewayUrl = "https://openapi.alipaydev.com/gateway.do";
+                options.AuthorizationEndpoint = "https://openauth.alipaydev.com/oauth2/publicAppAuthorize.htm";
+                options.SignType = "RSA2";
             });
 
             services.AddMvc();
